@@ -1,4 +1,4 @@
-version: 2.1 
+version: 2.1
 orbs:
   node: circleci/node@5.1.0
 
@@ -6,19 +6,20 @@ executors:
   my-exe:
     docker:
       - image: cimg/node:19.8.0
-      auth:
-        username: $DOCKER_HUB_USER
-        password: $DOCKER_HUB_PASSWORD
+    auth:
+      username: $DOCKER_HUB_USER
+      password: $DOCKER_HUB_PASSWORD
 
 jobs:
   test:
-  executor: my-exe
-  steps:
-    - checkout
-    - run: npm rebuild
-    - run: npm test 
+    executor: my-exe
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm rebuild
+      - run: npm test
 
-  workflows:
-      my-workflow:
-        jobs:
-          - test
+workflows:
+  my-workflow:
+    jobs:
+      - test
