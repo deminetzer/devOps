@@ -3,12 +3,13 @@ orbs:
   node: circleci/node@5.1.0
 
 executors:
-  my-exe:
-    docker:
-      - image: cimg/node:19.8.0
-    auth:
-      username: $DOCKER_HUB_USER
-      password: $DOCKER_HUB_PASSWORD
+  my-exe: *default-executor
+
+defaults:
+  executors:
+    default-executor:
+      docker:
+        - image: cimg/node:19.8.0
 
 jobs:
   test:
