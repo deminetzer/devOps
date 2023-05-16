@@ -3,13 +3,9 @@ orbs:
   node: circleci/node@5.1.0
 
 executors:
-  my-exe: *default-executor
-
-defaults:
-  executors:
-    default-executor:
-      docker:
-        - image: cimg/node:19.8.0
+  my-exe:
+    docker:
+      - image: cimg/node:19.8.0
 
 jobs:
   test:
